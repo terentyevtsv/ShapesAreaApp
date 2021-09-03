@@ -1,4 +1,5 @@
 ﻿using System;
+using ShapesAreaApp.AreaCalculatorLib.Exceptions;
 
 namespace ShapesAreaApp.AreaCalculatorLib.Models
 {
@@ -14,10 +15,10 @@ namespace ShapesAreaApp.AreaCalculatorLib.Models
         {
             const int minShapeSize = 3;
 
-            if (_points.Length < minShapeSize)
-                throw new Exception("Фигура должна состоять из точек!");
-
             _points = points;
+
+            if (_points.Length < minShapeSize)
+                throw new ShapePointsRequiredException();
         }
 
         public virtual double GetArea()
@@ -30,7 +31,7 @@ namespace ShapesAreaApp.AreaCalculatorLib.Models
                 area += _points[i].X * _points[i + 1].Y;
             }
 
-            area += _points[++i].X * _points[0].Y;
+            area += _points[i].X * _points[0].Y;
 
             for (i = 0; i < _points.Length - 1; ++i)
             {

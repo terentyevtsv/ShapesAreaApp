@@ -1,4 +1,5 @@
 ﻿using System;
+using ShapesAreaApp.AreaCalculatorLib.Exceptions;
 
 namespace ShapesAreaApp.AreaCalculatorLib.Models.Shapes
 {
@@ -9,7 +10,7 @@ namespace ShapesAreaApp.AreaCalculatorLib.Models.Shapes
         public Circle(double radius)
         {
             if (radius <= 0)
-                throw new Exception("Радиус должен быть положительным!");
+                throw new ZeroOrNegativeWidthException("Радиус должен быть положительным!");
 
             _radius = radius;
         }
