@@ -15,10 +15,10 @@ namespace ShapesAreaApp.AreaCalculatorLib.Models
         {
             const int minShapeSize = 3;
 
-            _points = points;
-
-            if (_points.Length < minShapeSize)
+            if (points.Length < minShapeSize)
                 throw new ShapePointsRequiredException();
+
+            _points = points;
         }
 
         public virtual double GetArea()
